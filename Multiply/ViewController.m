@@ -12,12 +12,30 @@
 
     {
         __weak IBOutlet UITextField *myNumber;
-        IBOutlet UILabel *myMultiplier = 10;
+        __weak IBOutlet UILabel *myMultiplier;
+        __weak IBOutlet UILabel *myAnswer;
+        __weak IBOutlet UISlider *slider;
     }
 
 @end
 
 @implementation ViewController
+- (IBAction)onCalculateButtonPressed:(id)sender
+
+{
+    NSString *a = [myNumber text];
+    int b = [a intValue];
+    NSString *c = [myMultiplier text];
+    int d = [c intValue];
+    int e = b*d;
+    [myAnswer setText:[NSString stringWithFormat:@"%i", e]];
+}
+
+- (IBAction)sliderchanged:(id)sender
+{
+        int slidervalue = slider.value;
+        [myMultiplier setText:[NSString stringWithFormat:@"%i", slidervalue]];
+}
 
 - (void)viewDidLoad
 {
